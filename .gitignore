@@ -1,2 +1,13 @@
 /jSceneEditor/nbproject/private/
 /jSceneEditor/build/
+/jSceneEditor/dist/
+jSceneEditor/dist-solaris-sparcv9/
+jSceneEditor/dist-solaris-i586/
+jSceneEditor/dist-solaris-sparc/lib/
+jSceneEditor/dist-solaris-sparc/
+jSceneEditor/dist-windows-amd64/
+jSceneEditor/dist-macosx-universal/
+jSceneEditor/dist-macosx-ppc/
+jSceneEditor/dist-linux-i586/
+jSceneEditor/dist-windows-i586/
+jSceneEditor/dist-linux-amd64/

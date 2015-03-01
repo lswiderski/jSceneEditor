@@ -7,18 +7,32 @@
 package com.neufrin;
 
 import com.sun.opengl.util.Animator;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLJPanel;
+import javax.swing.AbstractListModel;
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
@@ -76,42 +90,145 @@ public class JSceneEditor extends JFrame {
     private void initComponents() {
 
         JLabel label = new JLabel();
+        jToolBar1 = new JToolBar();
+        jButton1 = new JButton();
         panel = new GLJPanel(createGLCapabilites());
+        jPanel1 = new JPanel();
+        jPanel4 = new JPanel();
+        jPanel5 = new JPanel();
+        jPanel2 = new JPanel();
+        jPanel3 = new JPanel();
+        jScrollPane1 = new JScrollPane();
+        jList1 = new JList();
+        jMenuBar1 = new JMenuBar();
+        jMenu1 = new JMenu();
+        jMenu2 = new JMenu();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(1366, 768));
 
         label.setText("JSceneEditor by neufrin");
+        getContentPane().add(label, BorderLayout.CENTER);
+
+        jToolBar1.setRollover(true);
+
+        jButton1.setText("jButton1");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton1);
+
+        getContentPane().add(jToolBar1, BorderLayout.PAGE_START);
+
+        panel.setPreferredSize(new Dimension(500, 0));
 
         GroupLayout panelLayout = new GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(panelLayout.createParallelGroup(Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGap(0, 2397, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(panelLayout.createParallelGroup(Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 1082, Short.MAX_VALUE)
         );
 
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(Alignment.LEADING)
-                    .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label))
-                .addContainerGap())
+        getContentPane().add(panel, BorderLayout.CENTER);
+
+        jPanel1.setMaximumSize(new Dimension(1000, 32767));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new Dimension(200, 195));
+
+        jPanel4.setBorder(BorderFactory.createTitledBorder("Prefabs"));
+        jPanel4.setPreferredSize(new Dimension(300, 123));
+
+        GroupLayout jPanel4Layout = new GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(jPanel4Layout.createParallelGroup(Alignment.LEADING)
+            .addGap(0, 288, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(layout.createParallelGroup(Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label)
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+        jPanel4Layout.setVerticalGroup(jPanel4Layout.createParallelGroup(Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        jPanel1.add(jPanel4);
+
+        jPanel5.setBorder(BorderFactory.createTitledBorder("Materials"));
+        jPanel5.setPreferredSize(new Dimension(300, 123));
+
+        GroupLayout jPanel5Layout = new GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(jPanel5Layout.createParallelGroup(Alignment.LEADING)
+            .addGap(0, 288, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(jPanel5Layout.createParallelGroup(Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel5);
+
+        getContentPane().add(jPanel1, BorderLayout.PAGE_END);
+
+        jPanel2.setBorder(BorderFactory.createTitledBorder("Properties"));
+        jPanel2.setMaximumSize(new Dimension(200, 32767));
+
+        GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+            .addGap(0, 423, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+            .addGap(0, 1059, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, BorderLayout.LINE_END);
+
+        jPanel3.setBorder(BorderFactory.createTitledBorder("Scene"));
+        jPanel3.setMaximumSize(new Dimension(200, 32767));
+        jPanel3.setPreferredSize(new Dimension(201, 164));
+
+        jList1.setModel(new AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        GroupLayout jPanel3Layout = new GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel3, BorderLayout.LINE_START);
+        jPanel3.getAccessibleContext().setAccessibleName("Scene");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * Called from within initComponents().
@@ -153,6 +270,18 @@ public class JSceneEditor extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JButton jButton1;
+    private JList jList1;
+    private JMenu jMenu1;
+    private JMenu jMenu2;
+    private JMenuBar jMenuBar1;
+    private JPanel jPanel1;
+    private JPanel jPanel2;
+    private JPanel jPanel3;
+    private JPanel jPanel4;
+    private JPanel jPanel5;
+    private JScrollPane jScrollPane1;
+    private JToolBar jToolBar1;
     private GLJPanel panel;
     // End of variables declaration//GEN-END:variables
 
